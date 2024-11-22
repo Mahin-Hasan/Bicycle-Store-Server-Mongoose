@@ -6,6 +6,13 @@ const createProduct = async (payload: IBicycle) => {
   return result;
 };
 
+const getAllProducts = async()=>{
+  const result = Bicycle.find();
+  return result
+}
+
+
 export const productService = {
   createProduct,
+  getAllProducts
 };
