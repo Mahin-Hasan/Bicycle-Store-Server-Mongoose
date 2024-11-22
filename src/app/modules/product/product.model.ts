@@ -31,16 +31,16 @@ const bicycleSchema = new Schema<IBicycle>(
     inStock: { type: Boolean, required: [true, 'inStock is a required field'] },
   },
   {
-    timestamps: true, // for creating time stamps during the post method
+    timestamps: true, // for creating time stamps during the post method | createdAt in timestamps is immutable by default
   },
 );
 
 //trying query for searchTerm
 bicycleSchema.pre('find', function (next) {
   const query = this.getQuery();
-  if (query) {
+  if (query.name || query.brand || query.type) {
     this.find({
-      $or: [{ name: query.name },  { brand: { $regex: query.brand, $options: 'i' } }, { type: query.type }],
+      $or: [{ name: query.name },  { brand: query.brand }, { type: query.type }],
     });
   
   }

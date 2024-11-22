@@ -41,7 +41,7 @@ const getAllProducts = async (req: Request, res: Response) => {
 //single product
 const getSingleProductbyId = async (req: Request, res: Response) => {
   try {
-    const  productId  = req.params.productId;
+    const productId = req.params.productId;
     const result = await productService.getSingleProductbyId(productId);
     res.send({
       message: 'single Product Retrived Successfully',
@@ -56,9 +56,52 @@ const getSingleProductbyId = async (req: Request, res: Response) => {
     });
   }
 };
+//update single product
+const updateSingleProductbyId = async (req: Request, res: Response) => {
+  try {
+    const productId = req.params.productId;
+    const updatedData = req.body;
+    const result = await productService.updateSingleProductbyId(
+      productId,
+      updatedData,
+    );
+    res.send({
+      message: 'Bicycle updated successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    res.send({
+      message: 'Update failed',
+      success: false,
+      error: error,
+    });
+  }
+};
+
+//delete single product
+const deleteSingleProductbyId = async (req: Request, res: Response) => {
+  try {
+    const productId = req.params.productId;
+    await productService.deleteSingleProductbyId(productId);
+    res.send({
+      message: 'Bicycle deleted successfully',
+      success: true,
+      data: {},
+    });
+  } catch (error) {
+    res.send({
+      message: 'Delete failed',
+      success: false,
+      error: error,
+    });
+  }
+};
 
 export const productController = {
   createProduct,
   getAllProducts,
   getSingleProductbyId,
+  updateSingleProductbyId,
+  deleteSingleProductbyId,
 };
