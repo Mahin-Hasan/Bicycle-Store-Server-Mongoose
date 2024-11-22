@@ -35,6 +35,18 @@ const bicycleSchema = new Schema<IBicycle>(
   },
 );
 
+//trying query for searchTerm
+bicycleSchema.pre('find', function (next) {
+  const query = this.getQuery();
+  if (query) {
+    this.find({
+      $or: [{ name: query.name },  { brand: { $regex: query.brand, $options: 'i' } }, { type: query.type }],
+    });
+  
+  }
+  next();
+});
+
 const Bicycle = model<IBicycle>('Bicycle', bicycleSchema);
 
 export default Bicycle;

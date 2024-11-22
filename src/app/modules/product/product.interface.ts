@@ -7,3 +7,9 @@ export interface IBicycle  {
   quantity: number;
   inStock: boolean;
 }
+
+export interface productQuery {
+  name?: string;
+  brand?: string;
+  type?: 'Mountain' | 'Road' | 'Hybrid' | 'BMX' | 'Electric';
+}
