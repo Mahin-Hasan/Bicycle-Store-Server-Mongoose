@@ -4,6 +4,15 @@
 This project is focused on creating a server using **Mongoose**, **MongoDB**, **TypeScript**, and **Express**. The server is designed following a modular pattern, ensuring scalability and maintainability.
 
 ---
+## 🌐 Live API  
+Access the live version of the API here:  
+[Bicycle store server](https://bicycle-store-server.vercel.app/)  
+
+---
+
+## 🎥 Video Explanation  
+Watch the complete project walkthrough on YouTube:  
+[Project Explanation Video add later](https://youtube.com/example)
 
 ## Getting Started
 
@@ -88,3 +97,4 @@ A complete backend solution for managing a bicycle store, enabling product inven
 - **POST** `/api/orders/revenue`  
   Calculate Revenue from Orders (Aggregation) 
 
+- add api live link and video link after hosting
