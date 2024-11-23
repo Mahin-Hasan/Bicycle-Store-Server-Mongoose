@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import { orderService } from './order.service';
 
-const createOrderController = async (req: Request, res: Response) => {
+const createOrder = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
 
@@ -18,6 +18,7 @@ const createOrderController = async (req: Request, res: Response) => {
       message: 'Failed to create order',
       success: false,
       error: error.message || error,
+      stack: error.stack,
     });
   }
 };
@@ -31,16 +32,17 @@ const getTotalRevenue = async (req: Request, res: Response) => {
       status: true,
       data: { totalRevenue },
     });
-  } catch (error:any) {
+  } catch (error: any) {
     res.send({
       message: 'Failed to calculate revenue',
       success: false,
       error: error.message || error,
+      stack: error.stack,
     });
   }
 };
 
 export const orderController = {
-  createOrderController,
+  createOrder,
   getTotalRevenue,
 };

@@ -1,11 +1,13 @@
 import { IBicycle, productQuery } from './product.interface';
 import Bicycle from './product.model';
 
+
+//create product
 const createProduct = async (payload: IBicycle) => {
   const result = await Bicycle.create(payload);
   return result;
 };
-
+// get all products | also perform query operations 
 const getAllProducts = async (query: productQuery | undefined) => {
   let result;
   result = await Bicycle.find();
@@ -22,7 +24,7 @@ const getSingleProductbyId = async (id: string) => {
   const result = await Bicycle.findById(id);
   return result;
 };
-
+//update single product 
 const updateSingleProductbyId = async (
   id: string,
   updatedData: Partial<IBicycle>,

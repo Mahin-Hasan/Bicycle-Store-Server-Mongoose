@@ -15,7 +15,7 @@ const createProduct = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.send({
-      message: 'Validation failed',
+      message: 'Failed to create Product',
       success: false,
       error: error.message || 'Something went wrong',
       stack: error.stack,
@@ -34,7 +34,7 @@ const getAllProducts = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.send({
-      message: 'Validation failed',
+      message: 'Failed to retrive all products',
       success: false,
       error: error.message || 'Something went wrong',
       stack: error.stack,
@@ -53,9 +53,10 @@ const getSingleProductbyId = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.send({
-      message: 'Validation failed',
+      message: 'Failed to retrive single product',
       success: false,
       error: error.message || 'Something went wrong',
+      stack: error.stack,
     });
   }
 };
@@ -75,9 +76,10 @@ const updateSingleProductbyId = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.send({
-      message: 'Update failed',
+      message: 'Failed to update product',
       success: false,
       error: error.message || 'Something went wrong',
+      stack: error.stack,
     });
   }
 };
@@ -94,9 +96,10 @@ const deleteSingleProductbyId = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.send({
-      message: 'Delete failed',
+      message: 'Failed to delete product',
       success: false,
       error: error.message || 'Something went wrong',
+      stack: error.stack,
     });
   }
 };

@@ -16,9 +16,26 @@ const orderSchema = new Schema<IOrder>(
       },
       immutable: true, // email value will not be updated
     },
-    product: { type: Schema.Types.ObjectId, required: true },
-    quantity: { type: Number, required: true },
-    totalPrice: { type: Number, required: true },
+    product: {
+      type: Schema.Types.ObjectId,
+      required: [true, 'Product id is a required field'],
+    },
+    quantity: {
+      type: Number,
+      required: [true, 'Quantity is a required field'],
+      min: [1, 'Quantity cannot be less than 1'],
+    },
+    totalPrice: {
+      type: Number,
+      required: [true, 'Total Price is a required field'],
+      min: [0, 'Total price must be a positive number'], 
+      validate: {
+        validator: function (value: number) {
+          return value > 0;
+        },
+        message: 'Total Price value cannot be less than 0. you have provided {VALUE}',
+      },
+    },
   },
   {
     timestamps: true,
