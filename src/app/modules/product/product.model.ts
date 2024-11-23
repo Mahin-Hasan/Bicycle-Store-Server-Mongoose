@@ -17,7 +17,10 @@ const bicycleSchema = new Schema<IBicycle>(
     },
     type: {
       type: String,
-      enum: ['Mountain', 'Road', 'Hybrid', 'BMX', 'Electric'],
+      enum: {
+        values:['Mountain', 'Road', 'Hybrid', 'BMX', 'Electric'],
+        message:'Type {VALUE} in not a valid type'
+      },
       required: true,
     },
     description: {

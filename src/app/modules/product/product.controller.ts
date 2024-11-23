@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 import { productService } from './product.service';
 import { productQuery } from './product.interface';
@@ -12,11 +13,12 @@ const createProduct = async (req: Request, res: Response) => {
       success: true,
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.send({
       message: 'Validation failed',
       success: false,
-      error: error,
+      error: error.message || 'Something went wrong',
+      stack: error.stack,
     });
   }
 };
@@ -30,11 +32,12 @@ const getAllProducts = async (req: Request, res: Response) => {
       success: true,
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.send({
       message: 'Validation failed',
       success: false,
-      error: error,
+      error: error.message || 'Something went wrong',
+      stack: error.stack,
     });
   }
 };
@@ -48,11 +51,11 @@ const getSingleProductbyId = async (req: Request, res: Response) => {
       success: true,
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.send({
       message: 'Validation failed',
       success: false,
-      error: error,
+      error: error.message || 'Something went wrong',
     });
   }
 };
@@ -70,11 +73,11 @@ const updateSingleProductbyId = async (req: Request, res: Response) => {
       success: true,
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.send({
       message: 'Update failed',
       success: false,
-      error: error,
+      error: error.message || 'Something went wrong',
     });
   }
 };
@@ -89,11 +92,11 @@ const deleteSingleProductbyId = async (req: Request, res: Response) => {
       success: true,
       data: {},
     });
-  } catch (error) {
+  } catch (error: any) {
     res.send({
       message: 'Delete failed',
       success: false,
-      error: error,
+      error: error.message || 'Something went wrong',
     });
   }
 };
