@@ -28,12 +28,13 @@ const orderSchema = new Schema<IOrder>(
     totalPrice: {
       type: Number,
       required: [true, 'Total Price is a required field'],
-      min: [0, 'Total price must be a positive number'], 
+      min: [0, 'Total price must be a positive number'],
       validate: {
         validator: function (value: number) {
           return value > 0;
         },
-        message: 'Total Price value cannot be less than 0. you have provided {VALUE}',
+        message:
+          'Total Price value cannot be less than 0. you have provided {VALUE}',
       },
     },
   },

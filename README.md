@@ -1,16 +1,18 @@
-
 # Bicycle Store Server Development with Mongoose, MongoDB, TypeScript, and Express
 
 This project is focused on creating a server using **Mongoose**, **MongoDB**, **TypeScript**, and **Express**. The server is designed following a modular pattern, ensuring scalability and maintainability.
 
 ---
-## 🌐 Live API  
+
+## 🌐 Live API
+
 Access the live version of the API here:  
-[Bicycle store server](https://bicycle-store-server.vercel.app/)  
+[Bicycle store server](https://bicycle-store-server.vercel.app/)
 
 ---
 
-## 🎥 Video Explanation  
+## 🎥 Video Explanation
+
 Watch the complete project walkthrough on YouTube:  
 [Project Explanation Video add later](https://youtube.com/example)
 
@@ -33,20 +35,23 @@ Ensure you have the following installed on your system:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/Mahin-Hasan/Bicycle-Store-Server-Mongoose.git 
+git clone https://github.com/Mahin-Hasan/Bicycle-Store-Server-Mongoose.git
 cd ./your working directory
 npm i
 ```
+
 ### Step 2: Install required packages and dev dependencies
 
 ```bash
 npm i
 ```
+
 ### Step 3: provide MongoDB URL with your credentials at .env
 
 ```bash
 DATABASE_URL= "your MongoDb URL"
 ```
+
 # Bicycle Store API
 
 A complete backend solution for managing a bicycle store, enabling product inventory, order processing, and revenue tracking. This API is built with modern web technologies and follows best practices for scalability and maintainability.
@@ -75,26 +80,27 @@ A complete backend solution for managing a bicycle store, enabling product inven
 ## 📋 API Endpoints
 
 ### Products
+
 - **GET** `/api/products`  
   Retrieve all available bicycles.
 
 - **POST** `/api/products`  
-  Add a new bicycle.  
-  
+  Add a new bicycle.
 - **GET** `/api/products/:productId`  
-  Get a specific bicycle.  
+  Get a specific bicycle.
 
 - **PUT** `/api/products/:productId`  
-  Update a bicycle.  
+  Update a bicycle.
 
 - **DELETE** `/api/products:productId`  
-  Delete a bicycle.  
-  
+  Delete a bicycle.
+
 ### Orders
+
 - **POST** `/api/orders`  
-  Order a bicycle.  
+  Order a bicycle.
 
 - **POST** `/api/orders/revenue`  
-  Calculate Revenue from Orders (Aggregation) 
+  Calculate Revenue from Orders (Aggregation)
 
 - add api live link and video link after hosting

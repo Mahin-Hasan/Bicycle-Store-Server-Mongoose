@@ -2,11 +2,16 @@
 import { Request, Response } from 'express';
 import { productService } from './product.service';
 import { productQuery } from './product.interface';
+import bicycleValidationSchemaZod from './product.validation';
 
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const body = req.body;
-    const result = await productService.createProduct(body);
+    // const body = req.body;
+    // const result = await productService.createProduct(body);
+    //Implementing Zod validation
+    const bicycleData = req.body;
+    const zodParsedData = bicycleValidationSchemaZod.parse(bicycleData);
+    const result = await productService.createProduct(zodParsedData);
 
     res.send({
       message: 'Bicycle created successfully',
@@ -17,7 +22,7 @@ const createProduct = async (req: Request, res: Response) => {
     res.send({
       message: 'Failed to create Product',
       success: false,
-      error: error.message || 'Something went wrong',
+      error: error || 'Something went wrong',
       stack: error.stack,
     });
   }

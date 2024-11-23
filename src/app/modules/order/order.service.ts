@@ -1,7 +1,6 @@
 import Order from './order.model';
 import { IOrder } from './order.interface';
 
-
 const createOrder = async (orderData: IOrder) => {
   const newOrder = await Order.create(orderData);
   return newOrder;

@@ -17,7 +17,7 @@ const createOrder = async (req: Request, res: Response) => {
     res.send({
       message: 'Failed to create order',
       success: false,
-      error: error.message || error,
+      error: error.message || 'Invalid product Id',
       stack: error.stack,
     });
   }
@@ -36,7 +36,7 @@ const getTotalRevenue = async (req: Request, res: Response) => {
     res.send({
       message: 'Failed to calculate revenue',
       success: false,
-      error: error.message || error,
+      error: error.message || 'Something went wrong',
       stack: error.stack,
     });
   }
