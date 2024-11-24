@@ -14,7 +14,7 @@ Access the live version of the API here:
 ## 🎥 Video Explanation
 
 Watch the complete project walkthrough on YouTube:  
-[Project Explanation Video add later](https://youtube.com/example)
+[Project Explanation Video](https://www.youtube.com/watch?v=HrNs_coEpg4)
 
 ## Getting Started
 

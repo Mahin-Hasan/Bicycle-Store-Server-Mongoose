@@ -45,23 +45,28 @@ const orderSchema = new Schema<IOrder>(
 
 // pre middleware for order creating validation
 orderSchema.pre('save', async function (next) {
-  const { product, quantity } = this; // extracting product id and quantity passed in body
+  try {
+    const { product, quantity } = this; // extracting product id and quantity passed in body
 
-  const bicycle = await Bicycle.findById(product); // Matching passed product Id with Bicycle product Id
-  if (!bicycle) {
-    throw new Error('Product not found');
+    const bicycle = await Bicycle.findById(product); // Matching passed product Id with Bicycle product Id
+    if (!bicycle) {
+      throw new Error('Product not found');
+    }
+    // Check if sufficient stock is available
+    if (bicycle.quantity < quantity) {
+      throw new Error('Insufficient stock for this product');
+    }
+    // subtracting passed quantity from bicycle quantity
+    bicycle.quantity -= quantity;
+    if (bicycle.quantity === 0) {
+      bicycle.inStock = false; //setting inStock to false when quantity equal to 0
+    }
+    await bicycle.save();
+    next();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err:any) {
+    next(err);
   }
-  // Check if sufficient stock is available
-  if (bicycle.quantity < quantity) {
-    throw new Error('Insufficient stock for this product');
-  }
-  // subtracting passed quantity from bicycle quantity
-  bicycle.quantity -= quantity;
-  if (bicycle.quantity === 0) {
-    bicycle.inStock = false; //setting inStock to false when quantity equal to 0
-  }
-  await bicycle.save();
-  next();
 });
 
 // Middleware for revenue calculation using aggregate

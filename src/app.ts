@@ -13,7 +13,7 @@ app.use('/api', productRoute);
 app.use('/api', orderRoute);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Bicycle Store!');
+  res.send('Bicycle Store!!!');
 });
 
 export default app;
